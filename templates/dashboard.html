@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+<div class="container-fluide">
+    <div class="row" class="bg-image" style="background-image: url('static/images/intro.jpg');background-repeat: no-repeat; background-size:cover; height: 740px;">
+        <div class="col-lg-3  bg-light d-none d-md-block sidebar">
+            <div class="mb-1" style="background-color: rgb(245,222,179); height:740px;">
+                <div class="text-center"><br><br>
+                    <img src="/static/images/farmer_icon.png" alt="avatar" class="rounded-circle img-fluid"
+                        style="width: 100px; margin-top: 30px;">
+                    <h1 class="mt-0 mb-3" style="color:rgb(0, 0, 0);"> {{first_name}} {{last_name}} </h1>
+                    <hr color="black">
+                    
+                    <li><h3><i class="basicinfo"></i><a href="#" style="color: rgb(0, 0, 0);">Home</a></h3></li>
+                    <hr color="black">
+                    <li><h3><i class="Crop_Dis"></i><a href="crop_dis" style="color:rgb(5, 1, 1);">Crop Disease</a></h3></li>
+                    <hr color="black">
+                    <h3><a href="log_out" style="color:rgb(16, 4, 4);"> Log Out </a></h3>
+                    <hr color="black">                
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endif %}
+
+{% endblock body %}

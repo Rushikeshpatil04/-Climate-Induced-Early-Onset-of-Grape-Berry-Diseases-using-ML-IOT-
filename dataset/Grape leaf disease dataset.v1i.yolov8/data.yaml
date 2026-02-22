@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['Black_Measles', 'Black_rot', 'Blight Fungus', 'Healthy']
+
+roboflow:
+  workspace: tru-projects-cqcql
+  project: grape-leaf-disease-dataset
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tru-projects-cqcql/grape-leaf-disease-dataset/dataset/1

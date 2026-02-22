@@ -1,0 +1,126 @@
+{% block body %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            padding: 30px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            color: #333;
+        }
+
+        img {
+            max-width: 30%;
+            height: auto;
+            margin-top: 25px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            font-weight: bold;
+
+        }
+
+        .highlights {
+            font-weight: bold;
+            color: red;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #555;
+            text-align: justify;
+        }
+    .button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    a {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #218c53;
+    }
+
+    </style>
+
+
+
+    <h1>Prediction Result</h1>
+<img src="{{ image.Images.url }}" alt="Predicted Image">
+<p><span class="highlight">Predicted Label:</span> <span class="highlights" id="predicted-label">{{ predicted_label }}</span></p>
+<p><span class="highlight">Description :</span></p>
+<p>{{ predicted_description }}</p>
+<p><span class="highlight">Preventions :</span></p>
+<p>{{ prevention }}</p>
+
+<!-- Fertilizer Info (Will be shown dynamically) -->
+<p id="fertilizer-info" style="color:#2c3e50; font-weight:bold;"></p>
+
+<div class="button-container">
+    <a href="dashboard">Go to Dashboard</a>
+</div>
+
+<script>
+    const fertilizerData = {
+        "Apple___Black_rot": "NPK 10-10-10",
+        "Apple___Cedar_apple_rust": "NPK 10-10-10",
+        "Apple___healthy": "Compost / NPK 10-10-10",
+        "Blueberry___healthy": "Acidic fertilizer (4-3-4)",
+        "Cherry_(including_sour)___Powdery_mildew": "NPK 12-4-8",
+        "Cherry_(including_sour)___healthy": "Balanced fertilizer",
+        "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": "Nitrogen-rich fertilizer",
+        "Corn_(maize)__Common_rust": "NPK 20-10-10",
+        "Corn_(maize)___Northern_Leaf_Blight": "Nitrogen + Potassium",
+        "Corn_(maize)___healthy": "NPK 20-20-20",
+        "Grape___Black_rot": "NPK 10-10-10",
+        "Grape__Esca(Black_Measles)": "Organic compost",
+        "Grape__Leaf_blight(Isariopsis_Leaf_Spot)": "Balanced fertilizer",
+        "Grape___healthy": "NPK 10-10-10",
+        "Orange__Haunglongbing (Citrus_greening)": "Micronutrient blend (Zinc, Mg)",
+        "Peach___Bacterial_spot": "NPK 12-12-12",
+        "Peach___healthy": "Balanced fertilizer",
+        "Pepper,bell__Bacterial_spot": "Calcium-rich fertilizer",
+        "Pepper,bell__healthy": "NPK 5-10-10",
+        "Potato___Early_blight": "Low Nitrogen, High Potassium",
+        "Potato___Late_blight": "Potassium-rich fertilizer",
+        "Potato___healthy": "Balanced NPK",
+        "Raspberry___healthy": "Compost, NPK 10-10-10",
+        "Soybean___healthy": "Rhizobium-treated soil",
+        "Squash___Powdery_mildew": "Potassium-rich",
+        "Strawberry___Leaf_scorch": "NPK 10-10-10",
+        "Strawberry___healthy": "Organic compost",
+        "Tomato___Bacterial_spot": "Calcium-rich",
+        "Tomato___Early_blight": "Low Nitrogen, High Potassium",
+        "Tomato___Late_blight": "Potassium + Phosphorus rich",
+        "Tomato___Leaf_Mold": "NPK 10-5-10",
+        "Tomato___Septoria_leaf_spot": "Balanced fertilizer",
+        "Tomato___Spider_mites": "NPK 10-10-10",
+        "Tomato___Target_Spot": "Potassium-based",
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus": "Organic fertilizer",
+        "Tomato___Tomato_mosaic_virus": "Balanced NPK",
+        "Tomato___healthy": "NPK 5-10-10 or Tomato booster"
+    };
+
+    const predictedLabel = document.getElementById('predicted-label').innerText.trim();
+    const fertilizerInfo = fertilizerData[predictedLabel];
+
+    if (fertilizerInfo) {
+        document.getElementById('fertilizer-info').innerText = `Fertilizer: ${fertilizerInfo}`;
+    }
+</script>
+    {% endblock body %}

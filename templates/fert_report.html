@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}Report{% endblock title %}
+{% block body %}
+<div class="container-fluide">
+    <div class="row">
+      <div class="col-lg-3  bg-light d-none d-md-block sidebar">
+        <div class="mb-1" style="background-color: rgb(245,222,179); height:610px;">
+            <div class="text-center">
+                <img src="/static/images/farmer_icon.png" alt="avatar" class="rounded-circle img-fluid"
+                        style="width: 100px; margin-top: 30px;">
+                        <h1 class="mt-0 mb-3" style="color:rgb(0, 0, 0);"> {{first_name}} {{last_name}} </h1>
+                        <hr color="black">
+
+                <li>
+                    <h3><i class="basicinfo"></i><a href="dashboard" style="color: rgb(0, 0, 0);">Home</a></h3>
+                </li><hr color="black">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" style="background-color: hsl(182, 48%, 28%)"
+                        type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Basic Information
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item"
+                            href="https://krishi.maharashtra.gov.in/Site/Information/DisplayGuideLines.aspx?MenuID=1143">Government
+                            Yojna</a>
+                        <a class="dropdown-item" href="loan1">Loans</a>
+                        <a class="dropdown-item" href="insurance">Insurance</a>
+                    </div>
+                </div>
+                <hr color="black">
+                <li>
+                    <h3><i class="Crop_Pre"></i><a href="crop_prediction" style="color:rgb(6, 2, 2);">Crop Prediction</a></h3>
+                </li>
+                <hr color="black">
+                <li>
+                    <h3><i class="Crop_Dis"></i><a href="crop_dis" style="color:rgb(5, 1, 1);">Crop Disease</a></h3>
+                </li>
+                <hr color="black">
+                <li>
+                    <h3><i class="Crop_Dis"></i><a href="fert_rec" style="color:rgb(5, 1, 1);">Fertilizer Recommendation</a></h3>
+                </li>
+                <hr color="black">
+                <li><h3><i class="Crop_Pre"></i><a href="https://gstempire.com/krishi/login" style="color:rgb(6, 2, 2);">E-Commerce</a></h3></li>
+                <hr color="black">
+                <h3><a href="log_out" style="color:rgb(16, 4, 4);"> Log Out </a></h3>
+                <hr color="black">
+
+            </div>
+        </div>
+    </div>
+        <div class="col-lg-9">
+            <div class="mb-1" style="height:600px;">
+                <h1 class="ballet_text mt-1" style="color:#007406;"><b> Fertilizer Report</b></h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <div class="row" style="height:450px;overflow: auto;">
+                            <div class="col-md-10 m-auto">
+                                <div class="mail_section">
+                                    <table class="table text-left">
+                                        <tbody>
+
+                                          <tr>
+                                            <th scope="row">Ratio of Nitrogen Content : </th>
+                                            <td colspan="2">{{fert_data.n}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Ratio of Phosphorous Content : </th>
+                                            <td colspan="2">{{fert_data.p}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Ratio of Potassium Content : </th>
+                                            <td colspan="2">{{fert_data.k}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Temperature (in degree Celsius) : </th>
+                                            <td colspan="2">{{fert_data.temperature}}</td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">Humidity (in %) : </th>
+                                            <td colspan="2">{{fert_data.humidity}}</td>
+                                          </tr>
+                                         
+                                            <th scope="row"><h3><b>{{fert_data.prediction}}</b></h3></th>
+                                            <td colspan="2"></td>
+                                          </tr>
+                                        
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" style="margin-top: 20px;" class="btn btn-success">Download Report</button>
+                        <a style="margin-top: 20px;" class="btn btn-dark" href="dashboard">Go to Dashboard</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
