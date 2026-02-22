@@ -1,86 +1,74 @@
-# High Availability HPC Cluster
+# Climate-Induced Early Onset of Grape Berry Diseases using ML & IoT
 
-A robust High Availability (HA) High Performance Computing (HPC) Cluster designed to ensure continuous service availability, data integrity, and fault tolerance for mission-critical workloads using open-source Linux technologies.
+An intelligent agriculture system that uses IoT sensors and Machine Learning to monitor vineyard climate conditions and predict early onset of grape berry diseases, enabling farmers to take preventive actions and minimize crop loss.
 
 ---
 
 ## 📌 Overview
 
-This project implements an HA Cluster architecture that provides automatic failover and seamless recovery in case of Master node failure. It leverages synchronous block-level replication, cluster resource management, centralized authentication, and job scheduling to support high-performance computing environments.
+This project integrates Internet of Things (IoT) technology with Machine Learning models to continuously monitor environmental parameters such as temperature, humidity, and soil moisture in vineyards. The collected data is sent to the cloud, analyzed using ML algorithms, and used to predict disease risk at an early stage.
 
-The solution eliminates single points of failure and guarantees uninterrupted access to computing and storage resources.
+Farmers receive timely alerts, helping improve decision-making, reduce pesticide usage, and increase grape yield.
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
-- Two Master Nodes (Active/Standby)
-- Multiple Compute Nodes
-- Shared Storage via DRBD + NFS
-- Virtual IP managed by Pacemaker/Corosync
-- Secure communication using WireGuard
+- IoT Sensors deployed in vineyard  
+- Data transmission to ThingSpeak cloud  
+- Data analysis and ML training in Google Colab  
+- Prediction results and alerts for farmers  
 
 ---
 
 ## ⚙️ Technology Stack
 
-- Operating System: Linux  
-- Cluster Management: Pacemaker, Corosync, PCS  
-- Data Replication: DRBD  
-- Job Scheduler: Slurm  
-- Authentication: LDAP  
-- Shared Storage: NFS  
-- Security: Iptables Firewall  
-- VPN: WireGuard  
-- Automation: Shell Scripting  
+- Platform: ThingSpeak  
+- Development Environment: Google Colab  
+- Programming Language: Python  
+- IoT Sensors: Temperature, Humidity, Soil Moisture, Rainfall  
+- Libraries: NumPy, Pandas, Scikit-learn, Matplotlib  
 
 ---
 
-## 🔄 How It Works
+## 🔄 Workflow
 
-1. DRBD mirrors data synchronously between Master and Standby nodes.  
-2. Pacemaker continuously monitors node health.  
-3. If the Master fails:  
-   - Virtual IP moves to Standby node  
-   - DRBD promotes Standby to Primary  
-   - NFS, Slurm, and LDAP services restart automatically  
-4. Users experience minimal or no downtime.
+1. Sensors collect real-time climate data  
+2. Data uploaded to ThingSpeak cloud  
+3. Data fetched into Google Colab  
+4. Machine Learning model trained on historical data  
+5. Model predicts disease risk level  
+6. Alert sent to farmer if risk is high  
 
 ---
 
 ## 🚀 Features
 
-- Automatic failover & recovery  
-- Synchronous data replication  
-- Centralized user authentication  
-- Secure node-to-node communication  
-- Scalable compute infrastructure  
-- Firewall-protected environment  
+- Real-time vineyard monitoring  
+- Early disease prediction  
+- Cloud-based data storage  
+- Visual analytics & graphs  
+- Easy-to-use system for farmers  
 
 ---
 
-## ✅ Verification
+## ✅ Output
 
-pcs status  
-drbdadm status  
-sinfo  
-squeue  
+- Disease Risk: Low / Medium / High  
+- Graphs of climate parameters  
+- Early warning alerts  
 
 ---
 
 ## 📊 Use Cases
 
-- Scientific computing  
-- Machine learning workloads  
-- Research clusters  
-- Enterprise batch processing  
+- Smart agriculture  
+- Precision farming  
+- Vineyard monitoring  
+- Crop disease management  
 
 ---
 
-## 🔐 Security
+## 👨‍💻 Author
 
-- Only required ports are open via iptables  
-- All cluster traffic encrypted using WireGuard  
-- LDAP ensures centralized access control  
-
-
+Rushi Patil  
