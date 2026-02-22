@@ -83,8 +83,4 @@ squeue
 - All cluster traffic encrypted using WireGuard  
 - LDAP ensures centralized access control  
 
----
 
-## 📜 License
-
-MIT License
